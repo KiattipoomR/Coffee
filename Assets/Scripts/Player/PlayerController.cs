@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils;
 
 namespace Player
 {
@@ -39,7 +39,10 @@ namespace Player
         
         public void OnMove(InputAction.CallbackContext context)
         {
-            _playerMovement = context.ReadValue<Vector2>();
+            Vector2 rawMovement = context.ReadValue<Vector2>();
+            Vector2 isoViewportMovement = MathUtil.RotateVector2(rawMovement, Mathf.PI / 4);
+            
+            _playerMovement = isoViewportMovement;
         }
     }
 }
