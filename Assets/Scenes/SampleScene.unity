@@ -318,7 +318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24668
+  m_Name: pb_Mesh24680
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -772,6 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  playerModel: {fileID: 761455304}
 --- !u!143 &1127248186
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2575,7 +2576,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 3.164147, y: 1}
+    m_SensorSize: {x: 3.2555556, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

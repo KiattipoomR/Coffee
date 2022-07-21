@@ -12,7 +12,9 @@ namespace Player
         private CharacterController _controller;
         private PlayerInputActions _playerInput;
         private Vector2 _playerMovement;
-
+        
+        [SerializeField] private Transform playerModel;
+        
         #region Object Behaviors
         private void Awake()
         {
@@ -43,6 +45,12 @@ namespace Player
             Vector2 isoViewportMovement = MathUtil.RotateVector2(rawMovement, Mathf.PI / 4);
             
             _playerMovement = isoViewportMovement;
+
+            if (rawMovement.magnitude < 1) return;
+            
+            var angle = Mathf.Atan2(_playerMovement.y, _playerMovement.x) * Mathf.Rad2Deg;
+            angle = angle < 0 ? angle + 360 : angle;
+            playerModel.rotation = Quaternion.Euler(0f, 90 - angle, 0f);
         }
     }
 }
