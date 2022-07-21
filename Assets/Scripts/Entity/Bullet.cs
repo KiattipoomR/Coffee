@@ -1,4 +1,5 @@
 ﻿using System;
+using Interface;
 using UnityEngine;
 
 namespace Entity
@@ -15,6 +16,9 @@ namespace Entity
 
         private void OnCollisionEnter(Collision collision)
         {
+            IDamageable damageableEntity = collision.gameObject.GetComponentInParent<IDamageable>();
+            damageableEntity?.OnDamage();
+
             Destroy(gameObject);
         }
     }
