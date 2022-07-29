@@ -5,6 +5,7 @@ namespace Player
 {
     public class BulletSpawner : MonoBehaviour
     {
+        [SerializeField] private Transform spawnPoint;
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float shootingSpeed;
 
@@ -12,9 +13,8 @@ namespace Player
         {
             if (!Keyboard.current.spaceKey.wasPressedThisFrame) return;
             
-            Transform thisTransform = transform;
-            GameObject bullet = Instantiate(bulletPrefab, thisTransform.position, thisTransform.rotation);
-            bullet.GetComponent<Rigidbody>().velocity = thisTransform.forward * shootingSpeed;
+            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * shootingSpeed;
         }
     }
 }
