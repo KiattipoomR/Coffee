@@ -114,6 +114,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 8387137351407826566}
   bulletPrefab: {fileID: 4139019985201105463, guid: fa30ec49accb3e34d89d3a9f27670e69, type: 3}
   shootingSpeed: 10
+  reloadingTime: 1
+  magazineSize: 5
 --- !u!1 &8387137351407826585
 GameObject:
   m_ObjectHideFlags: 0
