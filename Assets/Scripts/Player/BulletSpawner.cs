@@ -8,19 +8,22 @@ namespace Player
     public class BulletSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPoint;
-        [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private float shootingSpeed;
         [SerializeField] private float reloadingTime;
         [SerializeField] private int magazineSize;
-        
+        [SerializeField] private GameObject[] bulletTypes;
+
         private int _bulletRemaining;
         private bool _isReloading;
+        private int _currentBulletTypeIndex;
 
         private void Start()
         {
             if (magazineSize < 1) throw new Exception("Max bullet count must be at least 1 !");
-
+            if (bulletTypes.Length < 1) throw new Exception("There must be at least 1 bullet type !");
+            
             _bulletRemaining = magazineSize;
+            _currentBulletTypeIndex = 0;
         }
 
         private void Update()
@@ -30,7 +33,7 @@ namespace Player
             if (Keyboard.current.spaceKey.wasPressedThisFrame &&  _bulletRemaining > 0 && !_isReloading)
             {
 
-                GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+                GameObject bullet = Instantiate(bulletTypes[_currentBulletTypeIndex], spawnPoint.position, spawnPoint.rotation);
                 bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * shootingSpeed;
                 _bulletRemaining--;
                 Debug.Log($"Bullet remaining: {_bulletRemaining}/{magazineSize}");
@@ -40,6 +43,13 @@ namespace Player
             if (Keyboard.current.rKey.wasPressedThisFrame && _bulletRemaining < magazineSize)
             {
                 StartCoroutine(Reload());
+            }
+            
+            if (Keyboard.current.fKey.wasPressedThisFrame && bulletTypes.Length > 1)
+            {
+                _currentBulletTypeIndex++;
+                if (_currentBulletTypeIndex >= bulletTypes.Length) _currentBulletTypeIndex -= bulletTypes.Length;
+                Debug.Log($"Using bullet: {bulletTypes[_currentBulletTypeIndex].name}");
             }
         }
 

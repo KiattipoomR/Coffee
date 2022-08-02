@@ -132,7 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 2475491472878071414}
-  bulletPrefab: {fileID: 4139019985201105463, guid: fa30ec49accb3e34d89d3a9f27670e69, type: 3}
   shootingSpeed: 10
   reloadingTime: 2
   magazineSize: 20
+  bulletTypes:
+  - {fileID: 4139019985201105463, guid: fa30ec49accb3e34d89d3a9f27670e69, type: 3}
+  - {fileID: 4139019985201105463, guid: d30ebd0cad7d6204c9ba8566645509ac, type: 3}
