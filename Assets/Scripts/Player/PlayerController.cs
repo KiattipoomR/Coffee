@@ -14,7 +14,6 @@ namespace Player
         private PlayerInputActions _playerInput;
         private Vector2 _playerMovement;
         
-        
         #region Object Behaviors
         private void Awake()
         {
