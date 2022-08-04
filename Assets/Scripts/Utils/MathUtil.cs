@@ -6,10 +6,10 @@ namespace Utils
     {
         public static Vector2 RotateVector2(Vector2 vector, float radianDegree)
         {
-            float sin = Mathf.Sin(radianDegree);
-            float cos = Mathf.Cos(radianDegree);
+            var sin = Mathf.Sin(radianDegree);
+            var cos = Mathf.Cos(radianDegree);
             
-            return new Vector2(cos* vector.x - sin * vector.y, sin * vector.x + cos * vector.y);
+            return new Vector2(cos * vector.x - sin * vector.y, sin * vector.x + cos * vector.y);
         }
     }
 }

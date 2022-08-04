@@ -1,5 +1,4 @@
-﻿using System;
-using Interface;
+﻿using Interface;
 using UnityEngine;
 
 namespace Entity
@@ -9,6 +8,7 @@ namespace Entity
     {
         private const float Lifetime = 3;
 
+        #region Object Behaviors
         private void Awake()
         {
             Destroy(gameObject, Lifetime);
@@ -16,10 +16,11 @@ namespace Entity
 
         private void OnCollisionEnter(Collision collision)
         {
-            IDamageable damageableEntity = collision.gameObject.GetComponentInParent<IDamageable>();
+            var damageableEntity = collision.gameObject.GetComponentInParent<IDamageable>();
             damageableEntity?.OnDamage();
 
             Destroy(gameObject);
         }
+        #endregion
     }
 }

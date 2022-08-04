@@ -8,12 +8,12 @@ namespace Player
     public class PlayerController : MonoBehaviour, PlayerInputActions.IPlayerActions
     {
         [SerializeField] private float movementSpeed = 5f;
+        [SerializeField] private Transform playerModel;
 
         private CharacterController _controller;
         private PlayerInputActions _playerInput;
         private Vector2 _playerMovement;
         
-        [SerializeField] private Transform playerModel;
         
         #region Object Behaviors
         private void Awake()
@@ -38,11 +38,12 @@ namespace Player
             _controller.Move(new Vector3(_playerMovement.x, 0f, _playerMovement.y) * movementSpeed * Time.deltaTime);
         }
         #endregion
-        
+
+        #region Inherited Methods
         public void OnMove(InputAction.CallbackContext context)
         {
-            Vector2 rawMovement = context.ReadValue<Vector2>();
-            Vector2 isoViewportMovement = MathUtil.RotateVector2(rawMovement, Mathf.PI / 4);
+            var rawMovement = context.ReadValue<Vector2>();
+            var isoViewportMovement = MathUtil.RotateVector2(rawMovement, Mathf.PI / 4);
             
             _playerMovement = isoViewportMovement;
 
@@ -52,5 +53,6 @@ namespace Player
             angle = angle < 0 ? angle + 360 : angle;
             playerModel.rotation = Quaternion.Euler(0f, 90 - angle, 0f);
         }
+        #endregion
     }
 }

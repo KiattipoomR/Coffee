@@ -7,11 +7,13 @@ namespace Entity
     {
         [SerializeField] private int health;
         
+        #region Inherited Methods
         public void OnDamage()
         {
             health--;
             
             if(health < 1) Destroy(gameObject);
         }
+        #endregion
     }
 }

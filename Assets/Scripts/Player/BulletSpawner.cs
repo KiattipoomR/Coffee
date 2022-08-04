@@ -17,6 +17,7 @@ namespace Player
         private bool _isReloading;
         private int _currentBulletTypeIndex;
 
+        #region Object Behaviors
         private void Start()
         {
             if (magazineSize < 1) throw new Exception("Max bullet count must be at least 1 !");
@@ -33,7 +34,7 @@ namespace Player
             if (Keyboard.current.spaceKey.wasPressedThisFrame &&  _bulletRemaining > 0 && !_isReloading)
             {
 
-                GameObject bullet = Instantiate(bulletTypes[_currentBulletTypeIndex], spawnPoint.position, spawnPoint.rotation);
+                var bullet = Instantiate(bulletTypes[_currentBulletTypeIndex], spawnPoint.position, spawnPoint.rotation);
                 bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * shootingSpeed;
                 _bulletRemaining--;
                 Debug.Log($"Bullet remaining: {_bulletRemaining}/{magazineSize}");
@@ -52,6 +53,7 @@ namespace Player
                 Debug.Log($"Using bullet: {bulletTypes[_currentBulletTypeIndex].name}");
             }
         }
+        #endregion
 
         private IEnumerator Reload()
         {
