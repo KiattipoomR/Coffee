@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906af6c205474ff6b02eaa87cf86e20a, type: 3}
+  m_Name: GunData_TestGun
+  m_EditorClassIdentifier: 
+  id: GunData_TestGun
+  itemName: Test Gun Proto
+  description: Test Gun Proto
+  model: {fileID: 8387137350696327071, guid: ef1a27384002eb245856a02a7ca0ccd1, type: 3}
+  usableAmmos:
+  - {fileID: 11400000, guid: 0471e14e0f6244e4aa9ec31b430b5464, type: 2}
+  maxBulletCount: 5
+  shootingSpeed: 10
+  reloadingTime: 1

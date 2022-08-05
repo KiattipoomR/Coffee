@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b67398437140759b44022d339adc7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 7a4442428ce980f448ad08c274e9d97f, type: 2}
   spawnPoint: {fileID: 2475491472878071414}
   shootingSpeed: 10
   reloadingTime: 2

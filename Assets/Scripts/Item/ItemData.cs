@@ -2,16 +2,17 @@ using UnityEngine;
 
 namespace Item
 {
-    [System.Serializable]
     [CreateAssetMenu(fileName = "ItemData", menuName = "Items/General Item", order = 0)]
     public class ItemData : ScriptableObject
     {
-        [SerializeField] private string id;
-        [SerializeField] private string itemName;
-        [SerializeField] private string description;
+        [SerializeField] protected string id;
+        [SerializeField] protected string itemName;
+        [SerializeField] protected string description;
+        [SerializeField] protected GameObject model;
 
         public string ID => id;
         public string ItemName => itemName;
         public string Description => description;
+        public GameObject Model => model;
     }
 }

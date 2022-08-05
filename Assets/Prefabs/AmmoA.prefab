@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1839675759805781947}
   - component: {fileID: 6412445366358940389}
   m_Layer: 0
-  m_Name: BulletB
+  m_Name: AmmoA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb4f0dcdb24ef4545ae72b4240f87263, type: 2}
+  - {fileID: 2100000, guid: 11e5a801626e5004aabff1f28e2c8022, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b8e4633db8489d8b447dfc70073549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 2
+  itemData: {fileID: 0}
 --- !u!54 &6412445366358940389
 Rigidbody:
   m_ObjectHideFlags: 0
