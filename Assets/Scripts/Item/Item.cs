@@ -6,7 +6,7 @@ namespace Item
     {
         [SerializeField] protected ItemData itemData;
 
-        private ItemData ItemData => itemData;
+        public ItemData ItemData => itemData;
         
         public void Init(ItemData data)
         {
