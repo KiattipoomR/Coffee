@@ -8,8 +8,8 @@ namespace Item
         [SerializeField] protected string id;
         [SerializeField] protected string itemName;
         [SerializeField] protected string description;
-        [SerializeField] private int maxStack;
-        [SerializeField] private float weight;
+        [SerializeField] protected int maxStack;
+        [SerializeField] protected float weight;
         [SerializeField] protected GameObject model;
 
         public string ID => id;
