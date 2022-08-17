@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace Item
 {
-    public class Item : MonoBehaviour
+    [System.Serializable]
+    public class Item
     {
         [SerializeField] protected ItemData itemData;
 
         public ItemData ItemData => itemData;
         
-        public void Init(ItemData data)
+        public Item(ItemData data)
         {
             itemData = data;
         }

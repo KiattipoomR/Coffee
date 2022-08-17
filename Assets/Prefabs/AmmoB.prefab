@@ -108,10 +108,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4139019985201105463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b8e4633db8489d8b447dfc70073549, type: 3}
+  m_Script: {fileID: 11500000, guid: 071f0e8b759246d78048febb2783639c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
+  ammo:
+    itemData: {fileID: 0}
 --- !u!54 &6412445366358940389
 Rigidbody:
   m_ObjectHideFlags: 0

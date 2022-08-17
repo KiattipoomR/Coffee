@@ -1,93 +1,37 @@
-﻿using System.Collections;
-using UnityEngine.InputSystem;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
 namespace Item
 {
+    [System.Serializable]
     public class Gun : Item
     {
-        [SerializeField] private Transform spawnPoint;
+        [ReadOnly, SerializeField] private int currentAmmoCount;
+        [SerializeField] private List<Ammo> usableAmmos;
 
-        [Header("Gun's Realtime Data")]
-        [ReadOnly, SerializeField] private string currentAmmo;
-        [ReadOnly, SerializeField] private int bulletRemaining;
-        [ReadOnly, SerializeField] private bool isReloading;
+        public int CurrentAmmoCount => currentAmmoCount;
+        public List<Ammo> UsableAmmos => usableAmmos;
         
-        private GunData GunData => (GunData) itemData;
-        
-        private int _currentBulletTypeIndex;
-
-        #region Object Behaviors
-        private void Start()
+        public Gun(ItemData data) : base(data)
         {
-            if (GunData.MaxBulletCount < 1)
-            {
-                Debug.LogError("Max bullet count must be at least 1 !");
-                return;
-            }
+            currentAmmoCount = 0;
+            usableAmmos = new List<Ammo>();
             
-            if (GunData.UsableAmmos.Length < 1)
+            foreach (var usableAmmo in ((GunData) data).UsableAmmos)
             {
-                Debug.LogError("There must be at least 1 bullet type !");
-                return;
-            }
-            
-            bulletRemaining = GunData.MaxBulletCount;
-            SetCurrentAmmo();
-        }
-
-        private void Update()
-        {
-            if(isReloading) return;
-            
-            if (Keyboard.current.spaceKey.wasPressedThisFrame &&  bulletRemaining > 0 && !isReloading)
-            {
-                FireAmmo();
-                return;
-            }
-
-            if (Keyboard.current.rKey.wasPressedThisFrame && bulletRemaining < GunData.MaxBulletCount)
-            {
-                StartCoroutine(Reload());
-                return;
-            }
-            
-            if (Keyboard.current.fKey.wasPressedThisFrame && GunData.UsableAmmos.Length > 1)
-            {
-                _currentBulletTypeIndex++;
-                if (_currentBulletTypeIndex >= GunData.UsableAmmos.Length) _currentBulletTypeIndex -= GunData.UsableAmmos.Length;
-                SetCurrentAmmo();
+                usableAmmos.Add(new Ammo(usableAmmo));
             }
         }
-        #endregion
 
-        private void FireAmmo()
+        public void FireAmmo(int amount)
         {
-            var bullet = Instantiate(GunData.UsableAmmos[_currentBulletTypeIndex].Model, spawnPoint.position, spawnPoint.rotation);
-            bullet.GetComponent<Ammo>().Init(GunData.UsableAmmos[_currentBulletTypeIndex]);
-            bullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * GunData.ShootingSpeed;
-                
-            bulletRemaining--;
-            Debug.Log($"Bullet remaining: {bulletRemaining}/{GunData.MaxBulletCount}");
+            currentAmmoCount = currentAmmoCount - amount > 0 ? currentAmmoCount - amount : 0;
         }
 
-        private IEnumerator Reload()
+        public void Reload()
         {
-            isReloading = true;
-            Debug.Log("Reloading !!");
-            
-            yield return new WaitForSeconds(GunData.ReloadingTime);
-            
-            bulletRemaining = GunData.MaxBulletCount;
-            isReloading = false;
-            Debug.Log($"Reloading Done. Bullet remaining: {bulletRemaining}/{GunData.MaxBulletCount}");
-        }
-
-        private void SetCurrentAmmo()
-        {
-            currentAmmo = GunData.UsableAmmos[_currentBulletTypeIndex].name;
-            Debug.Log($"Using bullet: {currentAmmo}");
+            currentAmmoCount = ((GunData) ItemData).MaxBulletCount;
         }
     }
 }

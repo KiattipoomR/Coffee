@@ -128,14 +128,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3358523898637356829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b67398437140759b44022d339adc7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f33c854a0d24330b30c9488ebe3d017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 7a4442428ce980f448ad08c274e9d97f, type: 2}
   spawnPoint: {fileID: 2475491472878071414}
-  shootingSpeed: 10
-  reloadingTime: 2
-  magazineSize: 20
-  bulletTypes:
-  - {fileID: 4139019985201105463, guid: fa30ec49accb3e34d89d3a9f27670e69, type: 3}
-  - {fileID: 4139019985201105463, guid: d30ebd0cad7d6204c9ba8566645509ac, type: 3}
+  gun:
+    itemData: {fileID: 11400000, guid: 7a4442428ce980f448ad08c274e9d97f, type: 2}
+    currentAmmoCount: 0
+    usableAmmos:
+    - itemData: {fileID: 11400000, guid: 0471e14e0f6244e4aa9ec31b430b5464, type: 2}
+    - itemData: {fileID: 11400000, guid: 8768cbff16c23f54782605bb5d388637, type: 2}
+  currentAmmo: 
+  isReloading: 0
