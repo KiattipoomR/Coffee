@@ -43,7 +43,7 @@ namespace Entity
         {
             if(isReloading) return;
             
-            if (Keyboard.current.spaceKey.wasPressedThisFrame &&  Gun.CurrentAmmoCount > 0 && !isReloading)
+            if (Mouse.current.leftButton.wasPressedThisFrame &&  Gun.CurrentAmmoCount > 0 && !isReloading)
             {
                 FireAmmo();
                 return;
